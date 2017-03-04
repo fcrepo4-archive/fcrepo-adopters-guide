@@ -34,18 +34,14 @@ A very simple message could look like:
 
 ```
 {
-  "@context" : [
-    "https://www.w3.org/ns/activitystreams" , {
-    "date" : {
-        "@id" : "http://purl.org/dc/terms/date",
-        "@type": "xsd:dateTime" } } ] ,
+  "@context" : "https://www.w3.org/ns/activitystreams" ,
   "type" : "Create" ,
   "id" : "urn:uuid:3c834a8f-5638-4412-aa4b-35ea80416a18" ,
-  "date" : "2016-05-19T17:17:39Z" ,
   "actor" : "http://example.org/user/fedoRaadmin" ,
   "object" : {
     "id" : "http://example.org/repository/resource" ,
     "type" : [ "ldp:Container" , "ldp:RDFSource" ] } ,
+  "published" : "2016-05-19T17:17:39Z" ,
   "inbox" : "http://example.org/receiver/inbox"
 }
 ```
@@ -55,8 +51,6 @@ Other types that can be expected of a Fedora implementation include: `Delete` an
 
 The `id` field corresponds to a unique identifier for the event itself. Implementations may use different mechanisms to
 ensure uniqueness and to format identifiers.
-
-The `date` field will be an ISO 8601 DateTime field.
 
 The `actor` field will correspond to the agent that triggered this event. The value of this field can be either a URI
 (as in this example) or a structured value such as:
@@ -87,9 +81,15 @@ that the RDF Types of a resource be included in a message. Thus, the longer form
     "type" : [ "ldp:Container" , "ldp:RDFSource" ] }
 ```
 
+The `published` field is optional. If present, it will be an ISO 8601 DateTime field. Alternately, a message may
+contain an `updated` field, also as an ISO 8601 Datetime field.
+
 Finally, the `inbox` field expands to `ldp:inbox` or `http://www.w3.org/ns/ldp#inbox`. This field is optional; not all
 resources will even have a `ldp:inbox` reference. For more information about the meaning of this field, please consult
 the [Linked Data Notifications](https://www.w3.org/TR/ldn/) specification.
+
+Other serialization structures are possible, so long as they conform to the ActivityStreams specification, so a
+messaging client should be aware that some variation is possible.
 
 ## Changes from Fedora4
 
