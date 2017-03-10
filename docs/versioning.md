@@ -11,8 +11,75 @@ The Fedora API Specification supports all the versioning capabilities for Fedora
 
 ## Old vs New
 
-```
-{
+### Create a new version
 
-}
+*Fedora 4*
+```
+
+curl -H "Slug: <version label>"  -X POST http://localhost:8080/rest/your-resource/fcr:versions
+
+```
+
+*Fedora API Spec*
+
+```
+@TODO to be filled in
+```
+
+### List all versions of a resource
+
+*Fedora 4*
+
+```
+curl  http://localhost:8080/rest/your-resource/fcr:versions
+```
+
+*Fedora API Spec*
+
+```
+@TODO to be filled in
+```
+
+### Get previous version a resource
+
+*Fedora 4*
+
+```
+curl http://localhost:8080/rest/resource/fcr:versions/<version-label>
+
+```
+
+*Fedora API Spec*
+
+```
+@TODO to be filled in
+```
+
+### Revert to a previous version of an object
+
+*Fedora 4*
+
+```
+curl -X PATCH http://localhost:8080/rest/path/to/resource/fcr:versions/<existing-version-name>
+
+```
+
+*Fedora API Spec*
+
+```
+@TODO to be filled in
+```
+
+### Remove a previous version of an object
+
+*Fedora 4*
+
+```
+curl -X DELETE http://localhost:8080/rest/path/to/resource/fcr:versions/<version-name>
+```
+
+*Fedora API Spec*
+
+```
+@TODO to be filled in
 ```
